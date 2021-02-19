@@ -12,7 +12,7 @@ MotorMatematico::MotorMatematico()
 unsigned short MotorMatematico::generarNumero(unsigned short nivel)
 {
     unsigned short int numero;
-    numero=(1+rand()%(5+nivel*5));
+    numero=(1+rand()%(5+nivel*2));
     return numero;
 
 }

@@ -29,18 +29,23 @@ private slots:
     void on_l9_clicked();
     void on_l10_clicked();
 
+    void on_restas_clicked();
+
+    void on_multiplicacion_clicked();
+
 private:
     Ui::MainWindow *ui;
     MotorMatematico *motor;
     QString pantalla_operacion;
     std::string modo;
+    short int respuesta;
 
     void inicializacionJuego();
     void ocultarNiveles(bool);
     void ocultarRespuestas(bool);
     void sumar(unsigned short int nivel);
-    void restar();
-    void multiplicar();
+    void restar(unsigned short int nivel);
+    void multiplicar(unsigned short int nivel);
 };
 
 #endif // MAINWINDOW_H
