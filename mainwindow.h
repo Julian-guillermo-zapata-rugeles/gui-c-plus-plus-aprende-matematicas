@@ -18,12 +18,29 @@ public:
 
 private slots:
     void on_sumas_clicked();
+    void on_l1_clicked();
+    void on_l2_clicked();
+    void on_l3_clicked();
+    void on_l4_clicked();
+    void on_l5_clicked();
+    void on_l6_clicked();
+    void on_l7_clicked();
+    void on_l8_clicked();
+    void on_l9_clicked();
+    void on_l10_clicked();
 
 private:
     Ui::MainWindow *ui;
     MotorMatematico *motor;
+    QString pantalla_operacion;
+    std::string modo;
+
     void inicializacionJuego();
     void ocultarNiveles(bool);
+    void ocultarRespuestas(bool);
+    void sumar(unsigned short int nivel);
+    void restar();
+    void multiplicar();
 };
 
 #endif // MAINWINDOW_H
