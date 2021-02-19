@@ -3,5 +3,8 @@
         <file>recursos/boys.png</file>
         <file>recursos/boton_salir.png</file>
         <file>recursos/win.mp3</file>
+        <file>recursos/error.mp3</file>
+        <file>recursos/informacion.png</file>
+        <file>recursos/julian.jpeg</file>
     </qresource>
 </RCC>

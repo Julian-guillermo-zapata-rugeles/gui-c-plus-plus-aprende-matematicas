@@ -27,15 +27,18 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     motormatematico.cpp \
-    sonidos.cpp
+    sonidos.cpp \
+    informacion.cpp
 
 HEADERS += \
         mainwindow.h \
     motormatematico.h \
-    sonidos.h
+    sonidos.h \
+    informacion.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    informacion.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -44,3 +47,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     multimedia.qrc
+
+DISTFILES += \
+    recursos/julian.jpeg

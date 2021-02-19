@@ -365,11 +365,13 @@ void MainWindow::on_respuesta1_clicked()
         meta=meta+1;
         ui->meta->setText("CORRECTAS : "+QString::number(meta));
         ui->meta->setStyleSheet("font-size:16pt; font-weight:600; color:#3465a4");
+        SonidoBotones.sonidoCorrecto();
 
     }
     else{
         ui->operacion->setText(" CASI : "+QString::number(respuesta));
         ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:red;");
+        SonidoBotones.sonidoErroneo();
     }
     tiempoAplicacion.stop();
     ocultarRespuestas(true);
@@ -385,10 +387,12 @@ void MainWindow::on_respuesta2_clicked()
         meta=meta+1;
         ui->meta->setText("CORRECTAS : "+QString::number(meta));
         ui->meta->setStyleSheet("font-size:16pt; font-weight:600; color:#3465a4");
+        SonidoBotones.sonidoCorrecto();
     }
     else{
         ui->operacion->setText(" CASI : "+QString::number(respuesta));
         ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:red;");
+        SonidoBotones.sonidoErroneo();
     }
     tiempoAplicacion.stop();
     ocultarRespuestas(true);
@@ -407,12 +411,13 @@ void MainWindow::on_respuesta3_clicked()
         meta=meta+1;
         ui->meta->setText("CORRECTAS : "+QString::number(meta));
         ui->meta->setStyleSheet("font-size:16pt; font-weight:600; color:#3465a4");
-        sonido.stop();
-        sonido.play();
+        SonidoBotones.sonidoCorrecto();
+
     }
     else{
         ui->operacion->setText(" CASI : "+QString::number(respuesta));
         ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:red;");
+        SonidoBotones.sonidoErroneo();
     }
     tiempoAplicacion.stop();
     ocultarRespuestas(true);
@@ -428,12 +433,13 @@ void MainWindow::on_respuesta4_clicked()
     if(motor->comprobarOperacion(tmp_value,modo)){
         ui->operacion->setText(" MUY BIEN !");
         ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:#4e9a06;");
-        sonido.stop();
-        sonido.play();
+        SonidoBotones.sonidoCorrecto();
+        meta=meta+1;
     }
     else{
         ui->operacion->setText(" CASI : "+QString::number(respuesta));
         ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:red;");
+        SonidoBotones.sonidoErroneo();
     }
     tiempoAplicacion.stop();
     ocultarRespuestas(true);
@@ -478,4 +484,9 @@ void MainWindow::regenerar()
 void MainWindow::on_salir_clicked()
 {
     qApp->quit();
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+
 }

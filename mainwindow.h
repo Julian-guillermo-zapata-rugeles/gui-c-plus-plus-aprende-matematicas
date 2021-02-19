@@ -6,6 +6,7 @@
 #include <random>
 #include <QTimer>
 #include <QtMultimedia/QMediaPlayer>
+#include <sonidos.h>
 
 
 namespace Ui {
@@ -46,6 +47,8 @@ private slots:
 
     void on_salir_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     MotorMatematico *motor;
@@ -53,7 +56,7 @@ private:
     std::string modo;
     short int respuesta , minutos , segundos , level , progreso , meta;
     QTimer temporizador , tiempoAplicacion , regeneracion;
-    QMediaPlayer sonido;
+    Sonidos SonidoBotones;
 
     void inicializacionJuego();
     void ocultarNiveles(bool);
