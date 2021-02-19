@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>recursos/boys.png</file>
+        <file>recursos/boton_salir.png</file>
+    </qresource>
+</RCC>
