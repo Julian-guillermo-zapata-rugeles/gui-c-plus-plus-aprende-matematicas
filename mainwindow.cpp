@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    srand(time(0));
     motor = new MotorMatematico();
     inicializacionJuego();
 }
@@ -80,6 +81,7 @@ void MainWindow::sumar(unsigned short nivel)
     ui->operacion->setText(pantalla_operacion);
     ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:#4e9a06;");
     ocultarRespuestas(false);
+    configurarBotonRespuesta();
 }
 
 void MainWindow::restar(unsigned short nivel)
@@ -91,6 +93,7 @@ void MainWindow::restar(unsigned short nivel)
     ui->operacion->setText(pantalla_operacion);
     ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:#4e9a06;");
     ocultarRespuestas(false);
+    configurarBotonRespuesta();
 }
 
 void MainWindow::multiplicar(unsigned short nivel)
@@ -102,6 +105,29 @@ void MainWindow::multiplicar(unsigned short nivel)
     ui->operacion->setText(pantalla_operacion);
     ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:#4e9a06;");
     ocultarRespuestas(false);
+    configurarBotonRespuesta();
+}
+
+void MainWindow::configurarBotonRespuesta()
+{
+    short int tmp = 1+rand()%4;
+    ui->respuesta1->setText(QString::number(respuesta+(1-rand()%10)));
+    ui->respuesta2->setText(QString::number(respuesta+(1+rand()%10)));
+    ui->respuesta3->setText(QString::number(respuesta+(1-rand()%10)));
+    ui->respuesta4->setText(QString::number(respuesta+(1+rand()%10)));
+
+    if(tmp==1){
+        ui->respuesta1->setText(QString::number(respuesta));
+    }
+    else if(tmp==2){
+        ui->respuesta2->setText(QString::number(respuesta));
+    }
+    else if(tmp==3){
+        ui->respuesta3->setText(QString::number(respuesta));
+    }
+    else{
+        ui->respuesta4->setText(QString::number(respuesta));
+    }
 }
 
 
@@ -112,6 +138,7 @@ void MainWindow::on_sumas_clicked()
     ui->operacion->setStyleSheet(" font-size:15pt; font-weight:600; color:#4e9a06;");
     ocultarNiveles(false);
     modo="sumar";
+
 }
 
 
@@ -121,6 +148,7 @@ void MainWindow::on_restas_clicked()
     ui->operacion->setStyleSheet(" font-size:15pt; font-weight:600; color:#4e9a06;");
     ocultarNiveles(false);
     modo="restar";
+
 }
 
 void MainWindow::on_multiplicacion_clicked()
@@ -129,6 +157,7 @@ void MainWindow::on_multiplicacion_clicked()
     ui->operacion->setStyleSheet(" font-size:15pt; font-weight:600; color:#4e9a06;");
     ocultarNiveles(false);
     modo="multiplicar";
+
 }
 
 
@@ -270,5 +299,62 @@ void MainWindow::on_l10_clicked()
     }
     if(modo=="multiplicar"){
         multiplicar(10);
+    }
+}
+
+void MainWindow::on_respuesta1_clicked()
+{
+    short int  tmp_value =ui->respuesta1->text().toShort();
+    if(motor->comprobarOperacion(tmp_value,modo)){
+        ui->operacion->setText(" MUY BIEN !");
+        ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:#4e9a06;");
+    }
+    else{
+        ui->operacion->setText(" CASI : "+QString::number(respuesta));
+        ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:red;");
+    }
+}
+
+void MainWindow::on_respuesta2_clicked()
+{
+    short int  tmp_value =ui->respuesta2->text().toShort();
+    if(motor->comprobarOperacion(tmp_value,modo)){
+        ui->operacion->setText(" MUY BIEN !");
+        ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:#4e9a06;");
+    }
+    else{
+        ui->operacion->setText(" CASI : "+QString::number(respuesta));
+        ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:red;");
+    }
+}
+
+
+
+void MainWindow::on_respuesta3_clicked()
+{
+    short int  tmp_value =ui->respuesta3->text().toShort();
+    if(motor->comprobarOperacion(tmp_value,modo)){
+        ui->operacion->setText(" MUY BIEN !");
+        ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:#4e9a06;");
+    }
+    else{
+        ui->operacion->setText(" CASI : "+QString::number(respuesta));
+        ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:red;");
+    }
+}
+
+
+
+
+void MainWindow::on_respuesta4_clicked()
+{
+    short int  tmp_value =ui->respuesta4->text().toShort();
+    if(motor->comprobarOperacion(tmp_value,modo)){
+        ui->operacion->setText(" MUY BIEN !");
+        ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:#4e9a06;");
+    }
+    else{
+        ui->operacion->setText(" CASI : "+QString::number(respuesta));
+        ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:red;");
     }
 }

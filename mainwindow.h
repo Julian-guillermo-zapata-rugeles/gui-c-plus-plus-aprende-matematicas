@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <motormatematico.h>
+#include <random>
 
 namespace Ui {
 class MainWindow;
@@ -30,8 +31,11 @@ private slots:
     void on_l10_clicked();
 
     void on_restas_clicked();
-
     void on_multiplicacion_clicked();
+    void on_respuesta1_clicked();
+    void on_respuesta2_clicked();
+    void on_respuesta3_clicked();
+    void on_respuesta4_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -46,6 +50,7 @@ private:
     void sumar(unsigned short int nivel);
     void restar(unsigned short int nivel);
     void multiplicar(unsigned short int nivel);
+    void configurarBotonRespuesta();
 };
 
 #endif // MAINWINDOW_H
