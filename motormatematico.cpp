@@ -44,6 +44,19 @@ void MotorMatematico::generarOperacion(unsigned short nivel)
 
 bool MotorMatematico::comprobarOperacion(unsigned short eleccion, std::string modo)
 {
-    if(modo)
+    unsigned short int tmp_value=0;
+    if(modo=="sumar"){
+        tmp_value=numero1+numero2;
+    }
+    if(modo=="restar"){
+        tmp_value=numero1-numero2;
+    }
+    if(modo=="multiplicar"){
+        numero1=numero1*numero2;
+    }
+    if(tmp_value==eleccion){
+        return true;
+    }
+    return false;
 
 }

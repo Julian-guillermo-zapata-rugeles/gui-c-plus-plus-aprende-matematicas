@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <motormatematico.h>
 
 namespace Ui {
 class MainWindow;
@@ -17,6 +18,8 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    MotorMatematico *motor;
+    void inicializacionJuego();
 };
 
 #endif // MAINWINDOW_H

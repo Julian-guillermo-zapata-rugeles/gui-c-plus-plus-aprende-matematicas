@@ -15,7 +15,7 @@ public:
     unsigned short getResultado() const;
 
     void generarOperacion(unsigned short int nivel);
-    bool comprobarOperacion(unsigned short int eleccion);
+    bool comprobarOperacion(unsigned short int eleccion , std::string modo );
 
 
 private:
