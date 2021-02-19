@@ -5,6 +5,8 @@
 #include <motormatematico.h>
 #include <random>
 #include <QTimer>
+#include <QtMultimedia/QMediaPlayer>
+
 
 namespace Ui {
 class MainWindow;
@@ -51,6 +53,7 @@ private:
     std::string modo;
     short int respuesta , minutos , segundos , level , progreso , meta;
     QTimer temporizador , tiempoAplicacion , regeneracion;
+    QMediaPlayer sonido;
 
     void inicializacionJuego();
     void ocultarNiveles(bool);

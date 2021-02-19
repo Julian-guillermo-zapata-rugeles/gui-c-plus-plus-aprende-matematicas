@@ -23,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->meta->setText("CORRECTAS : 0");
     ui->meta->setStyleSheet("font-size:16pt; font-weight:600; color:#3465a4");
 
+
 }
 
 MainWindow::~MainWindow()
@@ -364,6 +365,7 @@ void MainWindow::on_respuesta1_clicked()
         meta=meta+1;
         ui->meta->setText("CORRECTAS : "+QString::number(meta));
         ui->meta->setStyleSheet("font-size:16pt; font-weight:600; color:#3465a4");
+
     }
     else{
         ui->operacion->setText(" CASI : "+QString::number(respuesta));
@@ -405,6 +407,8 @@ void MainWindow::on_respuesta3_clicked()
         meta=meta+1;
         ui->meta->setText("CORRECTAS : "+QString::number(meta));
         ui->meta->setStyleSheet("font-size:16pt; font-weight:600; color:#3465a4");
+        sonido.stop();
+        sonido.play();
     }
     else{
         ui->operacion->setText(" CASI : "+QString::number(respuesta));
@@ -424,6 +428,8 @@ void MainWindow::on_respuesta4_clicked()
     if(motor->comprobarOperacion(tmp_value,modo)){
         ui->operacion->setText(" MUY BIEN !");
         ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:#4e9a06;");
+        sonido.stop();
+        sonido.play();
     }
     else{
         ui->operacion->setText(" CASI : "+QString::number(respuesta));

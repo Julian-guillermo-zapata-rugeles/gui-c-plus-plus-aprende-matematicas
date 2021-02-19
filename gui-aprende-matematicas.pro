@@ -4,8 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
-
+QT       += core gui multimedia
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = gui-aprende-matematicas
@@ -27,11 +26,13 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    motormatematico.cpp
+    motormatematico.cpp \
+    sonidos.cpp
 
 HEADERS += \
         mainwindow.h \
-    motormatematico.h
+    motormatematico.h \
+    sonidos.h
 
 FORMS += \
         mainwindow.ui
