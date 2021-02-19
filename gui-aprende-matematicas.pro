@@ -26,10 +26,12 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    motormatematico.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    motormatematico.h
 
 FORMS += \
         mainwindow.ui
