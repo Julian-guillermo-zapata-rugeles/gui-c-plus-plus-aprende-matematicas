@@ -4,7 +4,6 @@ MotorMatematico::MotorMatematico()
 {
     this->numero1=0;
     this->numero2=0;
-    this->resultado=0;
 }
 
 
@@ -33,11 +32,6 @@ unsigned short MotorMatematico::getNumero2() const
     return numero2;
 }
 
-unsigned short MotorMatematico::getResultado() const
-{
-    return resultado;
-}
-
 
 
 /*-------------------- OPERACIONES MATEMATICAS ---------------------------*/
@@ -45,5 +39,11 @@ void MotorMatematico::generarOperacion(unsigned short nivel)
 {
     this->numero1=generarNumero(nivel);
     this->numero2=generarNumero(nivel);
+
+}
+
+bool MotorMatematico::comprobarOperacion(unsigned short eleccion, std::string modo)
+{
+    if(modo)
 
 }
