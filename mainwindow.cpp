@@ -488,5 +488,6 @@ void MainWindow::on_salir_clicked()
 
 void MainWindow::on_pushButton_clicked()
 {
-
+    about = new Informacion();
+    about->show();
 }

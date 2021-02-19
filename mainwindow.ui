@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Aprende Jugando</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="multimedia.qrc">
+    <normaloff>:/recursos/boys.png</normaloff>:/recursos/boys.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 255, 255);</string>
@@ -420,7 +424,7 @@ font-size:20px;
 font:bold;</string>
         </property>
         <property name="text">
-         <string>multiplicacion</string>
+         <string>multiplicación</string>
         </property>
        </widget>
       </item>
@@ -537,6 +541,8 @@ font:bold;</string>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="multimedia.qrc"/>
+ </resources>
  <connections/>
 </ui>

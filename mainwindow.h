@@ -7,7 +7,7 @@
 #include <QTimer>
 #include <QtMultimedia/QMediaPlayer>
 #include <sonidos.h>
-
+#include <informacion.h>
 
 namespace Ui {
 class MainWindow;
@@ -57,6 +57,7 @@ private:
     short int respuesta , minutos , segundos , level , progreso , meta;
     QTimer temporizador , tiempoAplicacion , regeneracion;
     Sonidos SonidoBotones;
+    Informacion *about;
 
     void inicializacionJuego();
     void ocultarNiveles(bool);
