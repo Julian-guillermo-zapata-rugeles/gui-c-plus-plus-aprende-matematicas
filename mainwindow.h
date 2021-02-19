@@ -42,12 +42,14 @@ private slots:
     void tiempoJuego();
     void regenerar();
 
+    void on_salir_clicked();
+
 private:
     Ui::MainWindow *ui;
     MotorMatematico *motor;
     QString pantalla_operacion;
     std::string modo;
-    short int respuesta , minutos , segundos , level , progreso;
+    short int respuesta , minutos , segundos , level , progreso , meta;
     QTimer temporizador , tiempoAplicacion , regeneracion;
 
     void inicializacionJuego();

@@ -15,7 +15,13 @@ MainWindow::MainWindow(QWidget *parent) :
     this->minutos=0;
     this->segundos=0;
     this->level=0;
+    this->meta=0;
     this->progreso=0;
+    QTimer::singleShot(0, this, SLOT(showFullScreen()));
+    ui->minijuego->setText("HOLA DE NUEVO :) ");
+    ui->minijuego->setStyleSheet("font-size:16pt; font-weight:600; color:#3465a4");
+    ui->meta->setText("CORRECTAS : 0");
+    ui->meta->setStyleSheet("font-size:16pt; font-weight:600; color:#3465a4");
 
 }
 
@@ -91,6 +97,7 @@ void MainWindow::sumar(unsigned short nivel)
     ocultarRespuestas(false);
     configurarBotonRespuesta();
     iniciarContador();
+
 }
 
 void MainWindow::restar(unsigned short nivel)
@@ -104,6 +111,7 @@ void MainWindow::restar(unsigned short nivel)
     ocultarRespuestas(false);
     configurarBotonRespuesta();
     iniciarContador();
+
 }
 
 void MainWindow::multiplicar(unsigned short nivel)
@@ -117,6 +125,7 @@ void MainWindow::multiplicar(unsigned short nivel)
     ocultarRespuestas(false);
     configurarBotonRespuesta();
     iniciarContador();
+
 }
 
 void MainWindow::configurarBotonRespuesta()
@@ -156,6 +165,8 @@ void MainWindow::on_sumas_clicked()
     ui->operacion->setStyleSheet(" font-size:15pt; font-weight:600; color:#4e9a06;");
     ocultarNiveles(false);
     modo="sumar";
+    ui->minijuego->setText("Mini Juego SUMAS");
+    ui->minijuego->setStyleSheet("font-size:16pt; font-weight:600; color:#3465a4");
 
 }
 
@@ -166,6 +177,8 @@ void MainWindow::on_restas_clicked()
     ui->operacion->setStyleSheet(" font-size:15pt; font-weight:600; color:#4e9a06;");
     ocultarNiveles(false);
     modo="restar";
+    ui->minijuego->setText("Mini Juego RESTAS");
+    ui->minijuego->setStyleSheet("font-size:16pt; font-weight:600; color:#3465a4");
 
 }
 
@@ -175,6 +188,8 @@ void MainWindow::on_multiplicacion_clicked()
     ui->operacion->setStyleSheet(" font-size:15pt; font-weight:600; color:#4e9a06;");
     ocultarNiveles(false);
     modo="multiplicar";
+    ui->minijuego->setText("Mini Juego Multiplicación");
+    ui->minijuego->setStyleSheet("font-size:16pt; font-weight:600; color:#3465a4");
 
 }
 
@@ -346,6 +361,9 @@ void MainWindow::on_respuesta1_clicked()
     if(motor->comprobarOperacion(tmp_value,modo)){
         ui->operacion->setText(" MUY BIEN !");
         ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:#4e9a06;");
+        meta=meta+1;
+        ui->meta->setText("CORRECTAS : "+QString::number(meta));
+        ui->meta->setStyleSheet("font-size:16pt; font-weight:600; color:#3465a4");
     }
     else{
         ui->operacion->setText(" CASI : "+QString::number(respuesta));
@@ -362,6 +380,9 @@ void MainWindow::on_respuesta2_clicked()
     if(motor->comprobarOperacion(tmp_value,modo)){
         ui->operacion->setText(" MUY BIEN !");
         ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:#4e9a06;");
+        meta=meta+1;
+        ui->meta->setText("CORRECTAS : "+QString::number(meta));
+        ui->meta->setStyleSheet("font-size:16pt; font-weight:600; color:#3465a4");
     }
     else{
         ui->operacion->setText(" CASI : "+QString::number(respuesta));
@@ -381,6 +402,9 @@ void MainWindow::on_respuesta3_clicked()
     if(motor->comprobarOperacion(tmp_value,modo)){
         ui->operacion->setText(" MUY BIEN !");
         ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:#4e9a06;");
+        meta=meta+1;
+        ui->meta->setText("CORRECTAS : "+QString::number(meta));
+        ui->meta->setStyleSheet("font-size:16pt; font-weight:600; color:#3465a4");
     }
     else{
         ui->operacion->setText(" CASI : "+QString::number(respuesta));
@@ -443,4 +467,9 @@ void MainWindow::regenerar()
     }
     regeneracion.stop();
 
+}
+
+void MainWindow::on_salir_clicked()
+{
+    qApp->quit();
 }
