@@ -5,6 +5,9 @@
 #include <motormatematico.h>
 #include <random>
 #include <QTimer>
+#include <QtMultimedia/QMediaPlayer>
+#include <sonidos.h>
+#include <informacion.h>
 
 namespace Ui {
 class MainWindow;
@@ -44,6 +47,8 @@ private slots:
 
     void on_salir_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     MotorMatematico *motor;
@@ -51,6 +56,8 @@ private:
     std::string modo;
     short int respuesta , minutos , segundos , level , progreso , meta;
     QTimer temporizador , tiempoAplicacion , regeneracion;
+    Sonidos SonidoBotones;
+    Informacion *about;
 
     void inicializacionJuego();
     void ocultarNiveles(bool);
