@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <motormatematico.h>
 #include <random>
+#include <QTimer>
 
 namespace Ui {
 class MainWindow;
@@ -37,12 +38,17 @@ private slots:
     void on_respuesta3_clicked();
     void on_respuesta4_clicked();
 
+    //------- timer ------------
+    void tiempoJuego();
+    void regenerar();
+
 private:
     Ui::MainWindow *ui;
     MotorMatematico *motor;
     QString pantalla_operacion;
     std::string modo;
-    short int respuesta;
+    short int respuesta , minutos , segundos , level , progreso;
+    QTimer temporizador , tiempoAplicacion , regeneracion;
 
     void inicializacionJuego();
     void ocultarNiveles(bool);
@@ -51,6 +57,8 @@ private:
     void restar(unsigned short int nivel);
     void multiplicar(unsigned short int nivel);
     void configurarBotonRespuesta();
+    void iniciarContador();
+
 };
 
 #endif // MAINWINDOW_H

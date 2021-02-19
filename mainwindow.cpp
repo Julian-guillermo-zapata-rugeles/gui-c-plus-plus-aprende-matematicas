@@ -9,6 +9,14 @@ MainWindow::MainWindow(QWidget *parent) :
     srand(time(0));
     motor = new MotorMatematico();
     inicializacionJuego();
+    connect(&tiempoAplicacion,SIGNAL(timeout()),this,SLOT(tiempoJuego()));
+    connect(&regeneracion,SIGNAL(timeout()),this,SLOT(regenerar()));
+    this->respuesta=0;
+    this->minutos=0;
+    this->segundos=0;
+    this->level=0;
+    this->progreso=0;
+
 }
 
 MainWindow::~MainWindow()
@@ -82,6 +90,7 @@ void MainWindow::sumar(unsigned short nivel)
     ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:#4e9a06;");
     ocultarRespuestas(false);
     configurarBotonRespuesta();
+    iniciarContador();
 }
 
 void MainWindow::restar(unsigned short nivel)
@@ -94,6 +103,7 @@ void MainWindow::restar(unsigned short nivel)
     ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:#4e9a06;");
     ocultarRespuestas(false);
     configurarBotonRespuesta();
+    iniciarContador();
 }
 
 void MainWindow::multiplicar(unsigned short nivel)
@@ -106,6 +116,7 @@ void MainWindow::multiplicar(unsigned short nivel)
     ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:#4e9a06;");
     ocultarRespuestas(false);
     configurarBotonRespuesta();
+    iniciarContador();
 }
 
 void MainWindow::configurarBotonRespuesta()
@@ -128,6 +139,13 @@ void MainWindow::configurarBotonRespuesta()
     else{
         ui->respuesta4->setText(QString::number(respuesta));
     }
+}
+
+void MainWindow::iniciarContador()
+{
+    segundos=0;
+    minutos=0;
+    tiempoAplicacion.start(1000);
 }
 
 
@@ -182,6 +200,8 @@ void MainWindow::on_l1_clicked()
     if(modo=="multiplicar"){
         multiplicar(1);
     }
+    level=1;
+    progreso=0;
 }
 
 void MainWindow::on_l2_clicked()
@@ -195,6 +215,8 @@ void MainWindow::on_l2_clicked()
     if(modo=="multiplicar"){
         multiplicar(2);
     }
+    level=2;
+    progreso=0;
 }
 
 void MainWindow::on_l3_clicked()
@@ -208,6 +230,8 @@ void MainWindow::on_l3_clicked()
     if(modo=="multiplicar"){
         multiplicar(3);
     }
+    level=3;
+    progreso=0;
 }
 
 void MainWindow::on_l4_clicked()
@@ -221,6 +245,8 @@ void MainWindow::on_l4_clicked()
     if(modo=="multiplicar"){
         multiplicar(4);
     }
+    level=4;
+    progreso=0;
 }
 
 void MainWindow::on_l5_clicked()
@@ -234,6 +260,8 @@ void MainWindow::on_l5_clicked()
     if(modo=="multiplicar"){
         multiplicar(5);
     }
+    level=5;
+    progreso=0;
 }
 
 
@@ -248,6 +276,8 @@ void MainWindow::on_l6_clicked()
     if(modo=="multiplicar"){
         multiplicar(6);
     }
+    level=6;
+    progreso=0;
 }
 
 void MainWindow::on_l7_clicked()
@@ -261,6 +291,8 @@ void MainWindow::on_l7_clicked()
     if(modo=="multiplicar"){
         multiplicar(7);
     }
+    level=7;
+    progreso=0;
 }
 
 void MainWindow::on_l8_clicked()
@@ -274,6 +306,8 @@ void MainWindow::on_l8_clicked()
     if(modo=="multiplicar"){
         multiplicar(8);
     }
+    level=8;
+    progreso=0;
 }
 
 void MainWindow::on_l9_clicked()
@@ -287,6 +321,8 @@ void MainWindow::on_l9_clicked()
     if(modo=="multiplicar"){
         multiplicar(9);
     }
+    level=9;
+    progreso=0;
 }
 
 void MainWindow::on_l10_clicked()
@@ -300,6 +336,8 @@ void MainWindow::on_l10_clicked()
     if(modo=="multiplicar"){
         multiplicar(10);
     }
+    level=10;
+    progreso=0;
 }
 
 void MainWindow::on_respuesta1_clicked()
@@ -313,6 +351,9 @@ void MainWindow::on_respuesta1_clicked()
         ui->operacion->setText(" CASI : "+QString::number(respuesta));
         ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:red;");
     }
+    tiempoAplicacion.stop();
+    ocultarRespuestas(true);
+    regeneracion.start(3000);
 }
 
 void MainWindow::on_respuesta2_clicked()
@@ -326,6 +367,10 @@ void MainWindow::on_respuesta2_clicked()
         ui->operacion->setText(" CASI : "+QString::number(respuesta));
         ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:red;");
     }
+    tiempoAplicacion.stop();
+    ocultarRespuestas(true);
+    regeneracion.start(2000);
+
 }
 
 
@@ -341,6 +386,9 @@ void MainWindow::on_respuesta3_clicked()
         ui->operacion->setText(" CASI : "+QString::number(respuesta));
         ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:red;");
     }
+    tiempoAplicacion.stop();
+    ocultarRespuestas(true);
+    regeneracion.start(2000);
 }
 
 
@@ -357,4 +405,42 @@ void MainWindow::on_respuesta4_clicked()
         ui->operacion->setText(" CASI : "+QString::number(respuesta));
         ui->operacion->setStyleSheet(" font-size:40pt; font-weight:600; color:red;");
     }
+    tiempoAplicacion.stop();
+    ocultarRespuestas(true);
+    regeneracion.start(2000);
+}
+
+
+
+
+
+void MainWindow::tiempoJuego()
+{
+    segundos=segundos+1;
+    if(segundos==60){
+        segundos=0;
+        minutos=minutos+1;
+    }
+    ui->tiempo->setText(QString::number(minutos)+" : "+QString::number(segundos));
+    ui->tiempo->setStyleSheet(" font-size:16pt; font-weight:600; color:#3465a4;");
+}
+
+void MainWindow::regenerar()
+{
+    ocultarRespuestas(false);
+    if(progreso<100){
+        if(modo=="sumar"){
+            sumar(level);
+        }
+        if(modo=="restar"){
+            restar(level);
+        }
+        if(modo=="multiplicar"){
+            multiplicar(level);
+        }
+        progreso=progreso+10;
+        ui->progressBar->setValue(progreso);
+    }
+    regeneracion.stop();
+
 }

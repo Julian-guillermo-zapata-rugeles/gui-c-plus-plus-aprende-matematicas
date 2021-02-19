@@ -5,6 +5,7 @@ MotorMatematico::MotorMatematico()
     this->numero1=0;
     this->numero2=0;
     srand(time(0));
+
 }
 
 
@@ -12,7 +13,7 @@ MotorMatematico::MotorMatematico()
 unsigned short MotorMatematico::generarNumero(unsigned short nivel)
 {
     unsigned short int numero;
-    numero=(1+rand()%(5+nivel*2));
+    numero=(1+rand()%(5*nivel));
     return numero;
 
 }
@@ -52,7 +53,7 @@ bool MotorMatematico::comprobarOperacion(unsigned short eleccion, std::string mo
         tmp_value=numero1-numero2;
     }
     if(modo=="multiplicar"){
-        numero1=numero1*numero2;
+        tmp_value=numero1*numero2;
     }
     if(tmp_value==eleccion){
         return true;
